@@ -14,11 +14,19 @@ export function BookIndex() {
     return bookService.query().then(setBooks)
   }
 
+  function removeBook(bookId) {
+    return bookService
+      .remove(bookId)
+      .then(() =>
+        setBooks((prevBook) => prevBook.filter((book) => book.id !== bookId)),
+      )
+  }
+
   if (!books)
     return (
       <div className="loader">
         <p>Loading...</p>
       </div>
     )
-  return <BookList books={books} />
+  return <BookList books={books} onRemove={removeBook} />
 }

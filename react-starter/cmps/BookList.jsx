@@ -1,15 +1,17 @@
 import { BookPreview } from "../cmps/BookPreview.jsx"
-export function BookList({ books }) {
+export function BookList({ books, onRemove }) {
   return (
-    <section className="car-list">
+    <section className="book-list">
       <ul className="fluid-grid">
-        {books.map((book, idx) => (
+        {books.map((book) => (
           <li key={book.id}>
-            <BookPreview book={book} idx={idx} />
+            <BookPreview book={book} />
 
             <div className="actions">
               <button className="details-btn">Details</button>
-              <button className="remove-btn">x</button>
+              <button className="remove-btn" onClick={() => onRemove(book.id)}>
+                x
+              </button>
             </div>
           </li>
         ))}

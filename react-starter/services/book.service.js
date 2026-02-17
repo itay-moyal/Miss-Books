@@ -33,7 +33,7 @@ function query(filterBy = {}) {
 
 function get(bookId) {
   return storageService.get(BOOK_KEY, bookId).then((book) => {
-    book = _setNextPrevbookId(book)
+    book = _setNextPrevBookId(book)
     return book
   })
 }
@@ -75,7 +75,7 @@ function _createBooks() {
         id: "OXeMG8wNskc",
         title: "metus hendrerit",
         description: "placerat nisi sodales suscipit tellus",
-        thumbnail: "http://ca.org/books-photos/20.jpg",
+        thumbnail: "./BooksImages/1.jpg",
         listPrice: {
           amount: 109,
           currencyCode: "EUR",
@@ -86,7 +86,7 @@ function _createBooks() {
         id: "JYOJa2NpSCq",
         title: "morbi",
         description: "placerat nisi sodales suscipit tellus",
-        thumbnail: "http://ca.org/books-photos/20.jpg",
+        thumbnail: "./BooksImages/2.jpg",
         listPrice: {
           amount: 109,
           currencyCode: "EUR",
@@ -97,7 +97,7 @@ function _createBooks() {
         id: "1y0Oqts35DQ",
         title: "at viverra venenatis",
         description: "placerat nisi sodales suscipit tellus",
-        thumbnail: "http://ca.org/books-photos/20.jpg",
+        thumbnail: "./BooksImages/3.jpg",
         listPrice: {
           amount: 109,
           currencyCode: "EUR",

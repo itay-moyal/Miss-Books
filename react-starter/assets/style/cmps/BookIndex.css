@@ -1,0 +1,43 @@
+.book-list ul {
+  gap: 1em;
+}
+
+.book-list li {
+  display: grid;
+  padding: 1em;
+  background-color: var(--clr1bg);
+  border-radius: 5px;
+}
+
+.book-list img,
+h2,
+p {
+  place-self: center;
+}
+
+.book-list .actions {
+  display: flex;
+  justify-content: space-between;
+
+  margin-block-start: 0.5em;
+}
+
+.book-list .actions button {
+  transition: 300ms;
+  place-self: end;
+}
+
+.book-list .actions button:hover {
+  cursor: pointer;
+  scale: 1.05;
+}
+.book-list li > * {
+  margin: 0;
+}
+.book-list li img {
+  transition: 600ms;
+}
+
+.book-list li img:hover {
+  scale: 1.05;
+}
