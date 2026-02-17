@@ -2,9 +2,11 @@ const { useState, useEffect } = React
 
 import { bookService } from "../services/book.service.js"
 import { BookList } from "../cmps/BookList.jsx"
+import { BookDetails } from "./BookDetails.jsx"
 
 export function BookIndex() {
   const [books, setBooks] = useState(null)
+  const [selectedBook, setSelectedBook] = useState(null)
 
   useEffect(() => {
     loadBooks()
@@ -25,8 +27,25 @@ export function BookIndex() {
   if (!books)
     return (
       <div className="loader">
-        <p>Loading...</p>
+        <img style={{ color: "blue" }} src="./BooksImages/loader.svg" alt="" />
       </div>
     )
-  return <BookList books={books} onRemove={removeBook} />
+  return (
+    <div className="book-index">
+      {!selectedBook && (
+        <BookList
+          books={books}
+          onRemove={removeBook}
+          onSelect={setSelectedBook}
+        />
+      )}
+
+      {selectedBook && (
+        <BookDetails
+          book={selectedBook}
+          onClearSelectedBook={() => setSelectedBook(null)}
+        />
+      )}
+    </div>
+  )
 }

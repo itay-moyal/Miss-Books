@@ -1,5 +1,5 @@
 import { BookPreview } from "../cmps/BookPreview.jsx"
-export function BookList({ books, onRemove }) {
+export function BookList({ books, onRemove, onSelect }) {
   return (
     <section className="book-list">
       <ul className="fluid-grid">
@@ -8,7 +8,9 @@ export function BookList({ books, onRemove }) {
             <BookPreview book={book} />
 
             <div className="actions">
-              <button className="details-btn">Details</button>
+              <button className="details-btn" onClick={() => onSelect(book)}>
+                Details
+              </button>
               <button className="remove-btn" onClick={() => onRemove(book.id)}>
                 x
               </button>
