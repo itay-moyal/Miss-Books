@@ -70,17 +70,41 @@ function getDefaultFilter(filterBy = { txt: "", minPrice: 0 }) {
 function _createBooks() {
   let books = utilService.loadFromStorage(BOOK_KEY)
   if (!books || !books.length) {
-    books = {
-      id: "OXeMG8wNskc",
-      title: "metus hendrerit",
-      description: "placerat nisi sodales suscipit tellus",
-      thumbnail: "http://ca.org/books-photos/20.jpg",
-      listPrice: {
-        amount: 109,
-        currencyCode: "EUR",
-        isOnSale: false,
+    books = [
+      {
+        id: "OXeMG8wNskc",
+        title: "metus hendrerit",
+        description: "placerat nisi sodales suscipit tellus",
+        thumbnail: "http://ca.org/books-photos/20.jpg",
+        listPrice: {
+          amount: 109,
+          currencyCode: "EUR",
+          isOnSale: false,
+        },
       },
-    }
+      {
+        id: "JYOJa2NpSCq",
+        title: "morbi",
+        description: "placerat nisi sodales suscipit tellus",
+        thumbnail: "http://ca.org/books-photos/20.jpg",
+        listPrice: {
+          amount: 109,
+          currencyCode: "EUR",
+          isOnSale: false,
+        },
+      },
+      {
+        id: "1y0Oqts35DQ",
+        title: "at viverra venenatis",
+        description: "placerat nisi sodales suscipit tellus",
+        thumbnail: "http://ca.org/books-photos/20.jpg",
+        listPrice: {
+          amount: 109,
+          currencyCode: "EUR",
+          isOnSale: false,
+        },
+      },
+    ]
     utilService.saveToStorage(BOOK_KEY, books)
   }
   // console.log(books)
