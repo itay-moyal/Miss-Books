@@ -23,8 +23,8 @@ function query(filterBy = {}) {
       books = books.filter((book) => regExp.test(book.title))
     }
 
-    if (filterBy.minSpeed) {
-      books = books.filter((book) => book.maxSpeed >= filterBy.minSpeed)
+    if (filterBy.minPrice) {
+      books = books.filter((book) => book.listPrice.amount >= filterBy.minPrice)
     }
 
     return books
@@ -70,53 +70,10 @@ function getDefaultFilter(filterBy = { txt: "", minPrice: 0 }) {
 function _createBooks() {
   let books = utilService.loadFromStorage(BOOK_KEY)
   if (!books || !books.length) {
-    books = [
-      {
-        id: "OXeMG8wNskc",
-        title: "metus hendrerit",
-        description: "placerat nisi sodales suscipit tellus",
-        thumbnail: "./BooksImages/1.jpg",
-        listPrice: {
-          amount: 109,
-          currencyCode: "EUR",
-          isOnSale: false,
-        },
-      },
-      {
-        id: "JYOJa2NpSCq",
-        title: "morbi",
-        description: "placerat nisi sodales suscipit tellus",
-        thumbnail: "./BooksImages/2.jpg",
-        listPrice: {
-          amount: 109,
-          currencyCode: "EUR",
-          isOnSale: false,
-        },
-      },
-      {
-        id: "1y0Oqts35DQ",
-        title: "at viverra venenatis",
-        description: "placerat nisi sodales suscipit tellus",
-        thumbnail: "./BooksImages/3.jpg",
-        listPrice: {
-          amount: 109,
-          currencyCode: "EUR",
-          isOnSale: false,
-        },
-      },
-    ]
+    books = booksData
     utilService.saveToStorage(BOOK_KEY, books)
   }
-  // console.log(books)
 }
-
-// function _createBooks() {
-//   let books = utilService.loadFromStorage(BOOK_KEY)
-//   if (!books || !books.length) {
-//     books = booksData
-//     utilService.saveToStorage(BOOK_KEY, books)
-//   }
-// }
 
 function _createBook(title, amount = 250) {
   const book = getEmptyBook(title, amount)

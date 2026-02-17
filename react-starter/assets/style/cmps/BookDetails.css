@@ -1,0 +1,64 @@
+.book-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "i c"
+    "i c";
+
+  margin-block-start: 1.2em;
+  padding: 1em;
+  border-radius: 5px;
+
+  background-color: var(--clr1bg);
+  place-self: center;
+  position: relative;
+}
+
+.book-details h2,
+p,
+img {
+  padding: 10px;
+  border-radius: 5%;
+}
+
+.book-details .book-title {
+  grid-area: c;
+  align-self: start;
+}
+.book-details .book-desc {
+  align-self: center;
+  grid-area: c;
+}
+.book-details .book-price {
+  grid-area: c;
+  align-self: end;
+}
+.book-details button {
+  grid-area: c;
+  place-self: end;
+  cursor: pointer;
+}
+
+.book-pagecount {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  text-decoration: underline;
+}
+
+.book-date {
+  position: absolute;
+  top: 2em;
+  right: 0;
+}
+
+.on-sale {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--onSale);
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 1;
+}

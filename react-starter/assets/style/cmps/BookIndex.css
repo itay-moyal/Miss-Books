@@ -15,6 +15,7 @@ p {
   place-self: center;
 }
 
+
 .book-list .actions {
   display: flex;
   justify-content: space-between;
@@ -46,40 +47,4 @@ p {
   place-self: center;
   margin: auto;
   margin-block-start: 200px;
-}
-
-.book-details {
-  margin-block-start: 1.2em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-  "i c"
-  "i c";
-  padding: 1em;
-  background-color: var(--clr1bg);
-  border-radius: 5px;
-  place-self: center;
-}
-
-.book-details h2,p,img{
-  padding: 10px;
-  border-radius: 5%;
-}
-
-.book-details .book-title {
-  grid-area: c;
-  align-self: start;
-}
-.book-details .book-desc {
-  align-self: center;
-  grid-area: c;
-}
-.book-details .book-price {
-  grid-area: c;
-  align-self: end;
-}
-.book-details button {
-  grid-area: c;
-  place-self: end;
-  cursor: pointer;
 }

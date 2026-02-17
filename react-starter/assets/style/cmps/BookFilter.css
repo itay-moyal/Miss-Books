@@ -1,0 +1,13 @@
+.book-filter {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    padding: 1em;
+    background-color: var(--clr1bg);
+    margin-block-start: 1em;
+}
+
+.book-filter p {
+    margin: 0;
+}
