@@ -1,5 +1,4 @@
 export function BookDetails({ book, onClearSelectedBook }) {
-  console.log('Is on sale?', book);
   const bookPrice = book.listPrice.amount
   const txtColor = bookPrice >= 150 ? "red" : bookPrice <= 20 ? "green" : ""
   function handlePageCount(pagecount) {
