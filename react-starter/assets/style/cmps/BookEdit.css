@@ -1,0 +1,21 @@
+.book-edit {
+    display: grid;
+    gap: .5em;
+
+    max-width: 50%;
+    padding: 10px;
+    background-color: var(--clr1);
+    margin-inline: auto;
+    margin-block-start: 1em;
+
+    input {
+        grid-column: 2;
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+        grid-column: 2;
+        justify-self: end;
+    }
+}

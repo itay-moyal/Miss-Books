@@ -11,5 +11,7 @@
 @import "cmps/AppHeader.css";
 @import "cmps/UserMsg.css";
 @import "cmps/BookIndex.css";
-@import 'cmps/BookDetails.css';
+@import "cmps/BookDetails.css";
 @import "cmps/BookFilter.css";
+@import "cmps/BookEdit.css";
+@import "cmps/ReviewList.css";

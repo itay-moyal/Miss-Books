@@ -3,6 +3,7 @@ import { storageService } from "./async-storage.service.js"
 import { booksData } from "../books.js"
 
 const BOOK_KEY = "bookDB"
+const REVIEW_KEY = "reviewDB"
 _createBooks()
 
 export const bookService = {
@@ -12,6 +13,8 @@ export const bookService = {
   save,
   getEmptyBook,
   getDefaultFilter,
+  addReview,
+  removeReview,
 }
 // For Debug (easy access from console):
 // window.cs = bookService
@@ -53,8 +56,8 @@ function save(book) {
 function getEmptyBook(title = "", amount = "") {
   return {
     title,
-    description: "",
-    thumbnail: "",
+    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. I`,
+    thumbnail: "./BooksImages/1.jpg",
     listPrice: {
       amount,
       currencyCode: "EUR",
@@ -91,5 +94,21 @@ function _setNextPrevBookId(book) {
     book.nextBookId = nextBook.id
     book.prevBookId = prevBook.id
     return book
+  })
+}
+
+function addReview(bookId, review) {
+  return get(bookId).then((book) => {
+    review.id = utilService.makeId()
+    if (!book.reviews) book.reviews = []
+    book.reviews.push(review)
+    return save(book)
+  })
+}
+
+function removeReview(bookId, reviewId) {
+  return get(bookId).then((book) => {
+    book.reviews = book.reviews.filter((review) => review.id !== reviewId)
+    return save(book)
   })
 }

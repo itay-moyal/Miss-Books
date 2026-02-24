@@ -23,7 +23,7 @@ p {
   margin-block-start: 0.5em;
 }
 
-.book-list .actions button {
+.book-list .actions a, button {
   transition: 300ms;
   place-self: end;
 }

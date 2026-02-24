@@ -1,13 +1,13 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
 
 import { bookService } from "../services/book.service.js"
 import { BookList } from "../cmps/BookList.jsx"
-import { BookDetails } from "./BookDetails.jsx"
 import { BookFilter } from "../cmps/BookFilter.jsx"
+import { showSuccessMsg } from "../services/event-bus.service.js"
 
 export function BookIndex() {
   const [books, setBooks] = useState(null)
-  const [selectedBook, setSelectedBook] = useState(null)
   const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
 
   useEffect(() => {
@@ -21,8 +21,10 @@ export function BookIndex() {
   function removeBook(bookId) {
     return bookService
       .remove(bookId)
-      .then(() =>
-        setBooks((prevBook) => prevBook.filter((book) => book.id !== bookId)),
+      .then(
+        () =>
+          setBooks((prevBook) => prevBook.filter((book) => book.id !== bookId)),
+        showSuccessMsg(`Book Removed Successfully`),
       )
   }
 
@@ -34,23 +36,15 @@ export function BookIndex() {
     )
   return (
     <div className="book-index">
-      {!selectedBook && (
-        <React.Fragment>
-          <BookFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+      <React.Fragment>
+        <BookFilter filterBy={filterBy} setFilterBy={setFilterBy} />
 
-          <BookList
-            books={books}
-            onRemove={removeBook}
-            onSelect={setSelectedBook}
-          />
-        </React.Fragment>
-      )}
-      {selectedBook && (
-        <BookDetails
-          book={selectedBook}
-          onClearSelectedBook={() => setSelectedBook(null)}
-        />
-      )}
+        <Link to="/book/edit">
+          <button>Add a Book</button>
+        </Link>
+
+        <BookList books={books} onRemove={removeBook} />
+      </React.Fragment>
     </div>
   )
 }

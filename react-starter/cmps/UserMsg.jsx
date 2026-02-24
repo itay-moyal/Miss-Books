@@ -1,8 +1,19 @@
-export function UserMsg({ msg }) {
-    if (!msg) return <span></span>
+const { useState, useEffect } = React
+import { eventBus } from "../services/event-bus.service.js"
 
-    return <section className='user-msg success'>
-        {msg}
-    </section>
+export function UserMsg() {
+  const [msg, setMsg] = useState()
+
+  useEffect(() => {
+    eventBus.on("user-msg", showMsg)
+  }, [])
+
+  function showMsg(msg) {
+    setMsg(msg)
+    setTimeout(() => setMsg(null), 1500)
   }
-  
+
+  if (!msg) return <span></span>
+
+  return <section className={`user-msg ${msg.type}`}>{msg.txt}</section>
+}

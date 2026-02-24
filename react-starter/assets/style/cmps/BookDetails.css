@@ -33,7 +33,7 @@ img {
   grid-area: c;
   align-self: end;
 }
-.book-details button {
+.book-details nav,button {
   grid-area: c;
   place-self: end;
   cursor: pointer;

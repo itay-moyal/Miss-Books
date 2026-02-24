@@ -1,5 +1,7 @@
+const { Link } = ReactRouterDOM
 import { BookPreview } from "../cmps/BookPreview.jsx"
-export function BookList({ books, onRemove, onSelect }) {
+
+export function BookList({ books, onRemove }) {
   return (
     <section className="book-list">
       <ul className="fluid-grid">
@@ -8,9 +10,12 @@ export function BookList({ books, onRemove, onSelect }) {
             <BookPreview book={book} />
 
             <div className="actions">
-              <button className="details-btn" onClick={() => onSelect(book)}>
-                Details
-              </button>
+              <Link to={`/book/${book.id}`}>
+                <button className="btn-details">Details</button>
+              </Link>
+              <Link to={`/book/edit/${book.id}`}>
+                <button className="btn-edit">Edit</button>
+              </Link>
               <button className="remove-btn" onClick={() => onRemove(book.id)}>
                 x
               </button>
