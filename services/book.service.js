@@ -15,6 +15,7 @@ export const bookService = {
   getDefaultFilter,
   addReview,
   removeReview,
+  getFilterFromSearchParams,
 }
 // For Debug (easy access from console):
 // window.cs = bookService
@@ -111,4 +112,14 @@ function removeReview(bookId, reviewId) {
     book.reviews = book.reviews.filter((review) => review.id !== reviewId)
     return save(book)
   })
+}
+
+function getFilterFromSearchParams(searchParams) {
+  const defaultFilter = getDefaultFilter()
+  const filterBy = {}
+
+  for (const field in defaultFilter) {
+    filterBy[field] = searchParams.get(field) || ""
+  }
+  return filterBy
 }
